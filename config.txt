@@ -1,0 +1,3 @@
+knapsack_capacity = 165
+initial_population_size = 100
+mutation_probability = 0.3
