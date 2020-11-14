@@ -111,9 +111,9 @@ if __name__ == '__main__':
     knapsack_capacity, initial_population_count, mutation_probability = read_config_file("config.txt")
     answers: List[Answer] = make_initial_population(initial_population_count, individuals, knapsack_capacity)
 
-    new_crossover_answers: List[Answer] = []
+    new_crossover_answers: List[Answer] = answers
     for i in range(1000):
-        new_crossover_answers = crossover(answers, initial_population_count, individuals)
+        new_crossover_answers = crossover(new_crossover_answers, initial_population_count, individuals)
 
     stop = timeit.default_timer()
 
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     all_total_values = [_.total_value for _ in new_crossover_answers]
     print(all_total_values)
     print("All Individuals total Weights:")
-    print([_.total_value for _ in new_crossover_answers])
+    print([_.total_weight for _ in new_crossover_answers])
     print()
     print("Best Individual Value:", max(all_total_values))
     print("Best Individual Chromosome:",
